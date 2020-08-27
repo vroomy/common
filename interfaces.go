@@ -21,6 +21,7 @@ type Context interface {
 
 	// Param will return the associated parameter value with the provided key
 	Param(key string) (value string)
+
 	// Get will retrieve a value for a provided key from the Context's internal storage
 	Get(key string) (value string)
 
@@ -38,6 +39,12 @@ type Context interface {
 
 	// GetWriter will return response writer.
 	GetWriter() (writer http.ResponseWriter)
+
+	// NewJSONResponse will return a json response object
+	NewJSONResponse(code int, value interface{}) (resp interface{})
+
+	// NewTextResponse will return a json response object
+	NewTextResponse(code int, body []byte) (resp interface{})
 }
 
 // Handler is the HTTP handler type
