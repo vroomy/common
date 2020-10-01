@@ -1,7 +1,6 @@
 package common
 
 import (
-	"io"
 	"net/http"
 )
 
@@ -39,38 +38,10 @@ type Context interface {
 
 	// GetWriter will return response writer.
 	GetWriter() (writer http.ResponseWriter)
-
-	// NewAdoptResponse will return an adopt response object
-	NewAdoptResponse() (resp Response)
-
-	// NewNoContentResponse will return a no content response object
-	NewNoContentResponse() (resp Response)
-
-	// NewRedirectResponse will return a redirect response object
-	NewRedirectResponse(code int, route string) (resp Response)
-
-	// NewJSONResponse will return a json response object
-	NewJSONResponse(code int, value interface{}) (resp Response)
-
-	// NewJSONPResponse will return a json response object with callback
-	NewJSONPResponse(callback string, value interface{}) (resp Response)
-
-	// NewTextResponse will return a text response object
-	NewTextResponse(code int, body []byte) (resp Response)
-
-	// NewXMLResponse will return an xml response object
-	NewXMLResponse(code int, body []byte) (resp Response)
 }
 
 // Handler is the HTTP handler type
-type Handler func(ctx Context) Response
-
-// Response is the http response handlers return
-type Response interface {
-	StatusCode() (code int)
-	ContentType() (contentType string)
-	WriteTo(w io.Writer) (n int64, err error)
-}
+type Handler func(ctx Context) *Response
 
 // Storage is used as a basic form of Param storage for a Context
 // TODO: Determine with team if it seems valuable to change this to map[string]interface{}.
