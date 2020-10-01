@@ -6,8 +6,8 @@ func NewResponse(statusCode int, contentType string, value interface{}) *Respons
 	return &r
 }
 
-// NewAdoptResponse will return a new adopt Response
-func NewAdoptResponse() *Response {
+// NewAdopedtResponse will return a new adopted Response
+func NewAdopedtResponse() *Response {
 	return &Response{Adopted: true}
 }
 
