@@ -11,6 +11,7 @@ type Response struct {
 	StatusCode  int
 	ContentType string
 	Value       interface{}
+	Adopted     bool
 }
 
 func makeResponse(statusCode int, contentType string, value interface{}) (r Response) {
