@@ -6,6 +6,11 @@ func NewResponse(statusCode int, contentType string, value interface{}) *Respons
 	return &r
 }
 
+// NewAdoptResponse will return a new adopt Response
+func NewAdoptResponse() *Response {
+	return &Response{Adopted: true}
+}
+
 // Response determines how the server will respond
 type Response struct {
 	StatusCode  int
