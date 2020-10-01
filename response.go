@@ -11,7 +11,10 @@ type Response struct {
 	StatusCode  int
 	ContentType string
 	Value       interface{}
-	Adopted     bool
+
+	// Optional fields used by a minority of responses
+	Adopted  bool
+	Callback string
 }
 
 func makeResponse(statusCode int, contentType string, value interface{}) (r Response) {
