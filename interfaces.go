@@ -30,9 +30,6 @@ type Context interface {
 	// BindJSON is a helper function which binds the request body to a provided value to be parsed as JSON
 	BindJSON(value interface{}) (err error)
 
-	// AddHook will add a hook function to be ran after the context has completed
-	AddHook(Hook)
-
 	// GetRequest will return http.Request
 	GetRequest() (req *http.Request)
 
