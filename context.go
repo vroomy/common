@@ -16,8 +16,10 @@ type Context interface {
 	// Put will set a value for a provided key into the Context's internal storage
 	Put(key, value string)
 
-	// WriteString will write a string
-	WriteString(status int, str string)
+	// WriteString will write as a string value
+	WriteString(status int, contentType, str string)
+	// WriteBytes will write as a byteslice value
+	WriteBytes(status int, contentType string, str []byte)
 	// WriteJSON will write as JSON
 	WriteJSON(status int, value interface{})
 
