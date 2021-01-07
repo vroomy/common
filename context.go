@@ -27,6 +27,8 @@ type Context interface {
 	WriteReader(status int, contentType string, r io.Reader) error
 	// WriteJSON will write as JSON
 	WriteJSON(status int, value interface{}) error
+	// WriteNoContent will write a no content response
+	WriteNoContent() error
 	// Redirect will redirect the client
 	Redirect(status int, destination string) error
 
