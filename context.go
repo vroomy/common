@@ -1,6 +1,9 @@
 package common
 
-import "net/http"
+import (
+	"io"
+	"net/http"
+)
 
 // Context is the http context plugins need to support handlers
 type Context interface {
@@ -17,11 +20,15 @@ type Context interface {
 	Put(key, value string)
 
 	// WriteString will write as a string value
-	WriteString(status int, contentType, str string)
+	WriteString(status int, contentType, str string) error
 	// WriteBytes will write as a byteslice value
-	WriteBytes(status int, contentType string, str []byte)
+	WriteBytes(status int, contentType string, str []byte) error
+	// WriteReader will write as a reader value
+	WriteReader(status int, contentType string, r io.Reader) error
 	// WriteJSON will write as JSON
-	WriteJSON(status int, value interface{})
+	WriteJSON(status int, value interface{}) error
+	// Redirect will redirect the client
+	Redirect(status int, destination string) error
 
 	// Request will return the underlying http.Request
 	Request() (req *http.Request)
