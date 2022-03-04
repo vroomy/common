@@ -20,17 +20,17 @@ type Context interface {
 	Put(key, value string)
 
 	// WriteString will write as a string value
-	WriteString(status int, contentType, str string) error
+	WriteString(status int, contentType, str string)
 	// WriteBytes will write as a byteslice value
-	WriteBytes(status int, contentType string, str []byte) error
+	WriteBytes(status int, contentType string, str []byte)
 	// WriteReader will write as a reader value
-	WriteReader(status int, contentType string, r io.Reader) error
+	WriteReader(status int, contentType string, r io.Reader)
 	// WriteJSON will write as JSON
-	WriteJSON(status int, value interface{}) error
+	WriteJSON(status int, value interface{})
 	// WriteNoContent will write a no content response
-	WriteNoContent() error
+	WriteNoContent()
 	// Redirect will redirect the client
-	Redirect(status int, destination string) error
+	Redirect(status int, destination string)
 
 	// Request will return the underlying http.Request
 	Request() (req *http.Request)
